@@ -44,3 +44,7 @@ output against. The comparison is done using `diff -Bw` to ignore whitespace.
 
  - Uses Docker; build the Docker image with `make` or `make clean build`.
  - Depends on [node-kit](https://github.com/jeremyworboys/node-kit)
+
+# LICENSE
+
+[GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
