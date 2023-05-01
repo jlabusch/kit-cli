@@ -14,7 +14,7 @@ SYNOPSIS
 DESCRIPTION
     Command-line compiler for CodeKit .kit files.
 
-    Use --source to specify the root directory of your source code; all of your "include" files
+    Use --source SRC_DIR to specify the root directory of your source code; all of your "include" files
     references in your .kit files need to be within this tree.
 
     Each FILE should be specified relative to SRC_DIR, e.g. if the absolute path is ~/src/website/index.kit
@@ -26,8 +26,12 @@ DESCRIPTION
 
     The default value of SRC_DIR is \$PWD.
 
-    Use the --dest option if you want to save the compiled HTML files to a different place
+    Use the --dest DEST_DIR option if you want to save the compiled HTML files to a different place
     rather than having them alongside the source files.
+
+    So extending the example above, if you want to separate your source files and build files
+    you probably want an invocation like
+        kit-cli.sh --source ~/src/website/source --dest ~/src/website/build --all
 
     Input file \$SRC_DIR/foo/bar.kit will be saved to \$DEST_DIR/foo/bar.html.
 
