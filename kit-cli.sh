@@ -14,7 +14,7 @@ SYNOPSIS
 DESCRIPTION
     Command-line compiler for CodeKit .kit files.
 
-    Use -d to specify the root directory of your source code; all of your "include" files
+    Use --source to specify the root directory of your source code; all of your "include" files
     references in your .kit files need to be within this tree.
 
     Each FILE should be specified relative to SRC_DIR, e.g. if the absolute path is ~/src/website/index.kit
