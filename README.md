@@ -45,6 +45,22 @@ output against. The comparison is done using `diff -Bw` to ignore whitespace.
  - Uses Docker; build the Docker image with `make` or `make clean build`.
  - Depends on [node-kit](https://github.com/jeremyworboys/node-kit)
 
+# INSTALLATION
+
+Clone this git repo:
+
+    ~$ git clone https://github.com/jlabusch/kit-cli.git
+
+Build the docker image:
+
+    ~$ cd kit-cli
+    kit-cli$ make
+
+Update your PATH: (optional)
+
+    kit-cli$ echo "export PATH=\"\$PATH:$PWD\"" >> ~/.bashrc
+    kit-cli$ source ~/.bashrc
+
 # LICENSE
 
 [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
