@@ -83,13 +83,20 @@ function kit_compile(){
     local FILE_UID
     local FILE_GID
 
-    for REL_FILE in $*; do
-        if ! grep -q '<body>' $REL_FILE; then
-            echo "$REL_FILE has no <body>; not compiling fragment" >&2
+    for INPUT in $*; do
+        if [ -f "$INPUT" ]; then
+            REL_FILE=$(realpath "$INPUT" | perl -p -e "s|$SRC_DIR/||")
+        elif [ -f "$SRC_DIR/$INPUT" ]; then
+            REL_FILE=$"$INPUT"
+        else
+            echo "Error: $INPUT does not exist relative to $SRC_DIR" >&2
             continue
         fi
 
-        REL_FILE=$(realpath "$REL_FILE" | perl -p -e "s|$SRC_DIR/||")
+        if ! grep -q '<body>' "$SRC_DIR/$REL_FILE"; then
+            echo "Warning: $REL_FILE has no <body>; not compiling fragment" >&2
+            continue
+        fi
 
         FILE_UID=$(stat -f '%u' "$SRC_DIR/$REL_FILE")
         FILE_GID=$(stat -f '%g' "$SRC_DIR/$REL_FILE")
