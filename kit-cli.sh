@@ -98,8 +98,13 @@ function kit_compile(){
             continue
         fi
 
-        FILE_UID=$(stat -f '%u' "$SRC_DIR/$REL_FILE")
-        FILE_GID=$(stat -f '%g' "$SRC_DIR/$REL_FILE")
+        STAT_OPT="-c"
+        if [ "$(uname)" = "Darwin" ]; then
+            STAT_OPT="-f"
+        fi
+
+        FILE_UID=$(stat $STAT_OPT '%u' "$SRC_DIR/$REL_FILE")
+        FILE_GID=$(stat $STAT_OPT '%g' "$SRC_DIR/$REL_FILE")
 
         mkdir -p "$DEST_DIR/$(dirname "$REL_FILE")"
 
